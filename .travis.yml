@@ -5,6 +5,8 @@ before_install:
 install:
   - npm install
   - npm run build
+script:
+  - true
 deploy:
   provider: script
   skip_cleanup: true
