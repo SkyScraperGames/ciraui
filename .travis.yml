@@ -1,0 +1,16 @@
+language: node
+nodejs: 8
+before_install:
+  - if [ ! -z "$SSH_KEY" ]; then echo $SSH_KEY | base64 --decode > $HOME/.ssh/id_rsa; fi
+install:
+  - npm install
+  - npm run build
+deploy:
+  provider: script
+  skip_cleanup: true
+  script : rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/web $SSH_USER@$SERVER_IP:$DEPLOY_PATH
+  on:
+    branch: master
+cache:
+  directories:
+   - "node_modules"
