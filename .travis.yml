@@ -1,4 +1,4 @@
-language: node
+language: node_js
 nodejs: 8
 before_install:
   - if [ ! -z "$SSH_KEY" ]; then echo $SSH_KEY | base64 --decode > $HOME/.ssh/id_rsa; fi
