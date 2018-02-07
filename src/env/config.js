@@ -1,3 +1,3 @@
 export default {
-  api: 'http://api.skyscrapergames.com',
+  api: 'https://api.skyscrapergames.com',
 };
