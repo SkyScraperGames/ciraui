@@ -17,7 +17,8 @@
             <div class="message-body">
               Use the putPixel function to draw a character from your Game Design Document.
               You will need a putPixel function for each pixel in your character.
-              If your character is made of 5 pixels then you will need 5 putPixel functions. Don’t use more than 8 pixels!
+              If your character is made of 5 pixels then you will need 5 putPixel functions. Don’t use more than 8
+              pixels!
             </div>
           </article>
         </div>
@@ -42,7 +43,10 @@
     },
     mounted() {
       import('../../../assets/python/lessons/lesson5.py')
-          .then((file) => { this.code = file; });
+        .then((file) => {
+          this.code = file;
+          this.name = 'lesson5.py';
+        });
     },
   };
 </script>

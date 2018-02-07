@@ -4,7 +4,8 @@
       <article class="message is-primary mb-25">
         <div class="message-body">
           <h2 class="is-size-3">Commenting</h2>
-          Comments are bits of code that can help you learn what the code is doing. Comments do not get read by computers. Comments always begin with a "#"!
+          Comments are bits of code that can help you learn what the code is doing. Comments do not get read by
+          computers. Comments always begin with a "#"!
           <article class="message is-warning mt-20">
             <div class="message-header">
               <p><b>For you to do</b></p>
@@ -35,7 +36,10 @@
     },
     mounted() {
       import('../../../assets/python/lessons/lesson1.py')
-          .then((file) => { this.code = file; });
+        .then((file) => {
+          this.code = file;
+          this.name = 'lesson1.py';
+        });
     },
   };
 </script>

@@ -42,7 +42,8 @@
     },
     mounted() {
       import('../../../assets/python/lessons/lesson6.py')
-          .then((file) => { this.code = file; });
+          .then((file) => { this.code = file;           this.name = 'lesson6.py';
+          });
     },
   };
 </script>

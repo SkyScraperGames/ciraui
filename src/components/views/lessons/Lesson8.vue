@@ -11,7 +11,8 @@
               <p><b>For you to do</b></p>
             </div>
             <div class="message-body">
-              Use what you have learned so far to make changes to the code. Try making your own print messages or changing colors!
+              Use what you have learned so far to make changes to the code. Try making your own print messages or
+              changing colors!
             </div>
           </article>
         </div>
@@ -36,7 +37,10 @@
     },
     mounted() {
       import('../../../assets/python/lessons/lesson8.py')
-          .then((file) => { this.code = file; });
+        .then((file) => {
+          this.code = file;
+          this.name = 'lesson8.py';
+        });
     },
   };
 </script>

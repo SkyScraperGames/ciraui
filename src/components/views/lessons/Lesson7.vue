@@ -4,7 +4,8 @@
       <article class="message is-primary mb-25">
         <div class="message-body">
           <h2 class="is-size-3">Using Variables</h2>
-          Variables are like boxes – they are good places to store things and recall them later. Add items to the variables ‘fruit’ and ‘veggies’ and see what happens when you add those variables together!
+          Variables are like boxes – they are good places to store things and recall them later. Add items to the
+          variables ‘fruit’ and ‘veggies’ and see what happens when you add those variables together!
         </div>
       </article>
     </div>
@@ -27,7 +28,10 @@
     },
     mounted() {
       import('../../../assets/python/lessons/lesson7.py')
-          .then((file) => { this.code = file; });
+        .then((file) => {
+          this.code = file;
+          this.name = 'lesson7.py';
+        });
     },
   };
 </script>
