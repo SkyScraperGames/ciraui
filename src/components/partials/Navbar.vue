@@ -21,9 +21,16 @@
         <router-link class="navbar-item" to="/help" @click.native="close">
           Help
         </router-link>
-        <router-link class="navbar-item" to="/lessons" @click.native="close">
-          Lessons
-        </router-link>
+        <b-dropdown position="is-bottom-left">
+          <a class="navbar-item" slot="trigger">
+            <span>Lessons</span>
+            <b-icon class="is-hidden-touch" icon="menu-down"></b-icon>
+          </a>
+
+          <b-dropdown-item v-for="lessonGroup in lessons" :key="lessonGroup.directory" has-link>
+            <router-link :to="`/lessons/${lessonGroup.directory}`">{{ lessonGroup.name }}</router-link>
+          </b-dropdown-item>
+        </b-dropdown>
         <b-dropdown position="is-bottom-left">
           <a class="navbar-item" slot="trigger">
             <span>Games</span>
@@ -110,6 +117,7 @@
   import { mixin as clickaway } from 'vue-clickaway';
   import { mapState, mapActions } from 'vuex';
 
+  import lessons from '../../assets/lessons/lessons.json';
   import { login } from '../../api/user';
 
   export default {
@@ -122,6 +130,7 @@
         remember: false,
         buttonLoading: false,
         formError: null,
+        lessons,
       };
     },
     computed: {

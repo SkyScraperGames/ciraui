@@ -85,7 +85,6 @@
     data() {
       return {
         running: false,
-        edited: true,
         saveAsInput: '',
         rename: null,
         isSaveAsModalActive: false,
@@ -94,7 +93,6 @@
     computed: {
       initialCode() {
         if (this.code) {
-          this.edited = false;
           return this.code;
         }
 
@@ -117,26 +115,15 @@
         enableBasicAutocompletion: true,
         enableLiveAutocompletion: true,
       });
-      editor.getSession().on('change', () => {
-        this.edited = true;
-      });
-      window.addEventListener('beforeunload', this.beforeUnload);
 
       SkulptClearScreen();
     },
     destroyed() {
       editor.destroy();
-      window.removeEventListener('beforeunload', this.beforeUnload);
     },
     watch: {
       code() {
-        if (this.loaded) {
-          this.edited = false;
-        }
-
-        this.saveCode();
         editor.setValue(this.code);
-        this.edited = false;
         this.stopCode();
         this.clearConsole();
         this.clearScreen();
@@ -162,40 +149,36 @@
         SkulptClearScreen();
       },
       saveCode() {
-        if (this.edited) {
-          if (!this.user) {
-            this.$snackbar.open({
-              message: 'Cannot save file. You aren\'t logged in!',
-              type: 'is-danger',
-            });
-            return;
-          }
-
-          const vm = this;
-
-          if (this.computedName === '') {
-            this.isSaveAsModalActive = true;
-            return;
-          }
-
-          this.edited = false;
-
-          save(this.computedName, editor.getValue())
-            .then((response) => {
-              if (!response.ok) {
-                vm.$snackbar.open({
-                  message: 'An error occured when saving the file.',
-                  type: 'is-danger',
-                });
-                return;
-              }
-
-              vm.$snackbar.open({
-                message: 'Your code has been saved!',
-                type: 'is-success',
-              });
-            });
+        if (!this.user) {
+          this.$snackbar.open({
+            message: 'Cannot save file. You aren\'t logged in!',
+            type: 'is-danger',
+          });
+          return;
         }
+
+        const vm = this;
+
+        if (this.computedName === '') {
+          this.isSaveAsModalActive = true;
+          return;
+        }
+
+        save(this.computedName, editor.getValue())
+          .then((response) => {
+            if (!response.ok) {
+              vm.$snackbar.open({
+                message: 'An error occured when saving the file.',
+                type: 'is-danger',
+              });
+              return;
+            }
+
+            vm.$snackbar.open({
+              message: 'Your code has been saved!',
+              type: 'is-success',
+            });
+          });
       },
       copyCode() {
         const prevSelection = editor.selection.toJSON();
@@ -203,12 +186,6 @@
         editor.focus();
         document.execCommand('copy');
         editor.selection.fromJSON(prevSelection);
-      },
-      beforeUnload(event) {
-        /* eslint-disable */
-        if (this.edited) {
-          event.returnValue = 'Data will be lost if you leave the page, are you sure?';
-        }
       },
     },
   };

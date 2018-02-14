@@ -94,12 +94,12 @@ const router = new Router({
       component: view('HelpIndex'),
     },
     {
-      path: '/lessons/:lesson',
+      path: '/lessons/:lessonGroup/:lesson',
       name: 'Lesson',
       component: view('Lesson'),
     },
     {
-      path: '/lessons',
+      path: '/lessons/:lessonGroup',
       name: 'LessonIndex',
       component: view('LessonIndex'),
     },

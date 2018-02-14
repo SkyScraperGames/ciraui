@@ -21,20 +21,23 @@
     },
     watch: {
       /* eslint-disable */
+      '$route.params.lessonGroup': function (lessonGroup) {
+        this.loadLesson(lessonGroup, this.$route.params.lesson);
+      },
       '$route.params.lesson': function (lesson) {
-        this.loadLesson(lesson);
+        this.loadLesson(this.$route.params.lessonGroup, lesson);
       },
     },
     mounted() {
-      this.loadLesson(this.$route.params.lesson);
+      this.loadLesson(this.$route.params.lessonGroup, this.$route.params.lesson);
     },
     methods: {
-      loadLesson(lesson) {
-        import(`../../assets/lessons/${lesson}/code.py`)
+      loadLesson(lessonGroup, lesson) {
+        import(`../../assets/lessons/${lessonGroup}/${lesson}/code.py`)
           .then((file) => {
             this.code = file;
           });
-        import(`../../assets/lessons/${lesson}/lesson.html`)
+        import(`../../assets/lessons/${lessonGroup}/${lesson}/lesson.html`)
           .then((file) => {
             this.lesson = file;
           });

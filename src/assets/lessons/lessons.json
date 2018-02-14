@@ -1,34 +1,102 @@
 [
   {
-    "directory": "1",
-    "name": "Comments"
+    "directory": "python",
+    "name": "Python",
+    "lessons": [
+      {
+        "directory": "1",
+        "name": "Comments"
+      },
+      {
+        "directory": "2",
+        "name": "Hello World"
+      },
+      {
+        "directory": "3",
+        "name": "Pixel Calculator"
+      },
+      {
+        "directory": "4",
+        "name": "Drawing a Pixel"
+      },
+      {
+        "directory": "5",
+        "name": "Drawing a Picture"
+      },
+      {
+        "directory": "6",
+        "name": "Conditional Statements"
+      },
+      {
+        "directory": "7",
+        "name": "Using Variables"
+      },
+      {
+        "directory": "8",
+        "name": "Making a Game"
+      }
+    ]
   },
   {
-    "directory": "2",
-    "name": "Hello World"
-  },
-  {
-    "directory": "3",
-    "name": "Pixel Calculator"
-  },
-  {
-    "directory": "4",
-    "name": "Drawing a Pixel"
-  },
-  {
-    "directory": "5",
-    "name": "Drawing a Picture"
-  },
-  {
-    "directory": "6",
-    "name": "Conditional Statements"
-  },
-  {
-    "directory": "7",
-    "name": "Using Variables"
-  },
-  {
-    "directory": "8",
-    "name": "Making a Game"
+    "directory": "sge",
+    "name": "Skyscraper Game Engine",
+    "lessons": [
+      {
+        "directory": "1",
+        "name": "SGE Quick Start 1"
+      },
+      {
+        "directory": "2",
+        "name": "SGE Quick Start 2"
+      },
+      {
+        "directory": "3",
+        "name": "SGE Quick Start 3"
+      },
+      {
+        "directory": "4",
+        "name": "SGE Quick Start 4"
+      },
+      {
+        "directory": "5",
+        "name": "SGE Quick Start 5"
+      },
+      {
+        "directory": "6",
+        "name": "SGE Quick Start 6"
+      },
+      {
+        "directory": "7",
+        "name": "SGE Quick Start 7"
+      },
+      {
+        "directory": "8",
+        "name": "SGE Quick Start 8"
+      },
+      {
+        "directory": "9",
+        "name": "SGE Quick Start 9"
+      },
+      {
+        "directory": "10",
+        "name": "SGE Quick Start 10"
+      },
+      {
+        "directory": "11",
+        "name": "SGE Quick Start 11"
+      },
+      {
+        "directory": "12",
+        "name": "SGE Quick Start 12"
+      },
+      {
+        "directory": "13",
+        "name": "SGE Quick Start 13"
+      },
+      {
+        "directory": "14",
+        "name": "SGE Quick Start 14"
+      }
+    ]
   }
 ]
