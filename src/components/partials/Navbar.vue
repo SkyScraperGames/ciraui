@@ -15,6 +15,9 @@
       </div>
 
       <div class="navbar-end">
+        <a class="navbar-item" href="https://old.skyscrapergames.com">
+          Old Site
+        </a>
         <router-link class="navbar-item" to="/editor" @click.native="close">
           Editor
         </router-link>
