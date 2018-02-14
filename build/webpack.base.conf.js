@@ -77,7 +77,11 @@ module.exports = {
       {
         test: /\.py$/,
         use: 'raw-loader'
-      }
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader'
+      },
     ]
   },
   node: {

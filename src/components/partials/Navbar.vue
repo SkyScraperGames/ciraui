@@ -21,37 +21,9 @@
         <router-link class="navbar-item" to="/help" @click.native="close">
           Help
         </router-link>
-        <b-dropdown position="is-bottom-left">
-          <a class="navbar-item" slot="trigger">
-            <span>Lessons</span>
-            <b-icon class="is-hidden-touch" icon="menu-down"></b-icon>
-          </a>
-
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/1">Lesson 1</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/2">Lesson 2</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/3">Lesson 3</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/4">Lesson 4</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/5">Lesson 5</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/6">Lesson 6</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/7">Lesson 7</router-link>
-          </b-dropdown-item>
-          <b-dropdown-item has-link>
-            <router-link to="/lessons/8">Lesson 8</router-link>
-          </b-dropdown-item>
-        </b-dropdown>
+        <router-link class="navbar-item" to="/lessons" @click.native="close">
+          Lessons
+        </router-link>
         <b-dropdown position="is-bottom-left">
           <a class="navbar-item" slot="trigger">
             <span>Games</span>

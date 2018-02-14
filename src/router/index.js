@@ -94,44 +94,14 @@ const router = new Router({
       component: view('HelpIndex'),
     },
     {
-      path: '/lessons/1',
-      name: 'Lesson1',
-      component: view('lessons/Lesson1'),
+      path: '/lessons/:lesson',
+      name: 'Lesson',
+      component: view('Lesson'),
     },
     {
-      path: '/lessons/2',
-      name: 'Lesson2',
-      component: view('lessons/Lesson2'),
-    },
-    {
-      path: '/lessons/3',
-      name: 'Lesson3',
-      component: view('lessons/Lesson3'),
-    },
-    {
-      path: '/lessons/4',
-      name: 'Lesson4',
-      component: view('lessons/Lesson4'),
-    },
-    {
-      path: '/lessons/5',
-      name: 'Lesson5',
-      component: view('lessons/Lesson5'),
-    },
-    {
-      path: '/lessons/6',
-      name: 'Lesson6',
-      component: view('lessons/Lesson6'),
-    },
-    {
-      path: '/lessons/7',
-      name: 'Lesson7',
-      component: view('lessons/Lesson7'),
-    },
-    {
-      path: '/lessons/8',
-      name: 'Lesson8',
-      component: view('lessons/Lesson8'),
+      path: '/lessons',
+      name: 'LessonIndex',
+      component: view('LessonIndex'),
     },
     {
       path: '/privacy',

@@ -1,0 +1,34 @@
+[
+  {
+    "directory": "1",
+    "name": "Comments"
+  },
+  {
+    "directory": "2",
+    "name": "Hello World"
+  },
+  {
+    "directory": "3",
+    "name": "Pixel Calculator"
+  },
+  {
+    "directory": "4",
+    "name": "Drawing a Pixel"
+  },
+  {
+    "directory": "5",
+    "name": "Drawing a Picture"
+  },
+  {
+    "directory": "6",
+    "name": "Conditional Statements"
+  },
+  {
+    "directory": "7",
+    "name": "Using Variables"
+  },
+  {
+    "directory": "8",
+    "name": "Making a Game"
+  }
+]
