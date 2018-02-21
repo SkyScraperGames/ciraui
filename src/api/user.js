@@ -46,8 +46,8 @@ export function profile() {
 
 export function resetPassword(oldPassword, newPassword) {
   const formData = new URLSearchParams();
-  formData.append('oldPassword', oldPassword);
-  formData.append('newPassword', newPassword);
+  formData.append('oldpassword', oldPassword);
+  formData.append('password', newPassword);
 
   return fetch(`${config.api}/user/changepassword`, {
     method: 'POST',
