@@ -2,9 +2,9 @@ import config from '../env/config';
 
 export function login(email, password, remember) {
   const formData = new URLSearchParams();
-  formData.append('email', email);
-  formData.append('password', password);
-  formData.append('remember', remember);
+  formData.set('email', email);
+  formData.set('password', password);
+  formData.set('remember', remember);
 
   return fetch(`${config.api}/user/login`, {
     method: 'POST',
@@ -18,8 +18,8 @@ export function login(email, password, remember) {
 
 export function register(email, password) {
   const formData = new URLSearchParams();
-  formData.append('email', email);
-  formData.append('password', password);
+  formData.set('email', email);
+  formData.set('password', password);
 
   return fetch(`${config.api}/user/signup`, {
     method: 'POST',
@@ -46,8 +46,8 @@ export function profile() {
 
 export function resetPassword(oldPassword, newPassword) {
   const formData = new URLSearchParams();
-  formData.append('oldpassword', oldPassword);
-  formData.append('password', newPassword);
+  formData.set('oldpassword', oldPassword);
+  formData.set('password', newPassword);
 
   return fetch(`${config.api}/user/changepassword`, {
     method: 'POST',
