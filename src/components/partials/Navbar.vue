@@ -109,6 +109,9 @@
           <b-dropdown-item has-link>
             <router-link to="/user/profile">Profile</router-link>
           </b-dropdown-item>
+          <b-dropdown-item has-link>
+            <router-link to="/user/resetPassword">Reset Password</router-link>
+          </b-dropdown-item>
           <b-dropdown-item @click="logout">Log out</b-dropdown-item>
         </b-dropdown>
       </div>

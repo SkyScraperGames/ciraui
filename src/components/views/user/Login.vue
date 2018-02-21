@@ -38,14 +38,9 @@
 <script>
   import { mapActions } from 'vuex';
 
-  import Editor from '../../partials/Editor';
-
   import { login } from '../../../api/user';
 
   export default {
-    components: {
-      Editor,
-    },
     data() {
       return {
         email: '',

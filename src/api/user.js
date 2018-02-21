@@ -43,3 +43,18 @@ export function profile() {
     credentials: 'include',
   });
 }
+
+export function resetPassword(oldPassword, newPassword) {
+  const formData = new URLSearchParams();
+  formData.append('oldPassword', oldPassword);
+  formData.append('newPassword', newPassword);
+
+  return fetch(`${config.api}/user/changepassword`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: formData,
+    credentials: 'include',
+  });
+}
