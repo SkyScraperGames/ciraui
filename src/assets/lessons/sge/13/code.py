@@ -100,11 +100,17 @@ class MyGame(CiraGame):
 
             # If the computer is to the left of the player, move right
             # or if the computer is to the right of the player, move left
-            self.cpuX=self.chasePlayer(self.x,self.cpuX)
+            if self.cpuX<self.x:
+                self.cpuX+=1
+            elif self.cpuX>self.x:
+                self.cpuX-=1
 
             #If the computer is above the player, move down. If the computer
             # is below the player, move up.
-            self.cpuY=self.chasePlayer(self.y,self.cpuY)
+            if self.cpuY<self.y:
+                self.cpuY+=1
+            elif self.cpuY>self.y:
+                self.cpuY-=1
 
         #Check to see if the player has been caught
         if self.x == self.cpuX and self.y == self.cpuY:
@@ -145,13 +151,3 @@ class MyGame(CiraGame):
         if direction==4 or direction==6 or direction==8:
             if self.x<self.xUpper:
                 self.x+=1
-
-        return
-
-    def chasePlayer(self,playerCoordinate,cpuCoordinate):
-            if cpuCoordinate<playerCoordinate:
-                return cpuCoordinate+1
-            elif cpuCoordinate>playerCoordinate:
-                return cpuCoordinate-1
-
-            return cpuCoordinate
