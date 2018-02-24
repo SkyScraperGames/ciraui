@@ -21,18 +21,9 @@ class MyGame(CiraGame):
 
     # called each time the frame updates
     def update(self):
-        if cira.keys.getKey('1-Left'):
-            self.x-=1
-        elif cira.keys.getKey('1-Right'):
-            self.x+=1
-        elif cira.keys.getKey('1-Up'):
-            self.y-=1
-        elif cira.keys.getKey('1-Down'):
-            self.y+=1
         pass
 
     # called when each frame needs to be drawn
     def draw(self):
-        cira.display.clearScreen(0,0,0)
         cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
         return
