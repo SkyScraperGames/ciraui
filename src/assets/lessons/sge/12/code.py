@@ -69,21 +69,37 @@ class MyGame(CiraGame):
             return
 
         if cira.keys.getKey('1-Left') and cira.keys.getKey('1-Up'):
-            self.movePlayer(5)
+            if self.x>self.xLower:
+                self.x-=1
+            if self.y>self.yLower:
+                self.y-=1
         elif cira.keys.getKey('1-Left') and cira.keys.getKey('1-Down'):
-            self.movePlayer(7)
+            if self.x>self.xLower:
+                self.x-=1
+            if self.y<self.yUpper:
+                self.y+=1
         elif cira.keys.getKey('1-Right') and cira.keys.getKey('1-Up'):
-            self.movePlayer(6)
+            if self.x<self.xUpper:
+                self.x+=1
+            if self.y>self.yLower:
+                self.y-=1
         elif cira.keys.getKey('1-Right') and cira.keys.getKey('1-Down'):
-            self.movePlayer(8)
+            if self.x<self.xUpper:
+                self.x+=1
+            if self.y<self.yUpper:
+                self.y+=1
         elif cira.keys.getKey('1-Left'):
-            self.movePlayer(3)
+            if self.x>self.xLower:
+                self.x-=1
         elif cira.keys.getKey('1-Right'):
-            self.movePlayer(4)
+            if self.x<self.xUpper:
+                self.x+=1
         elif cira.keys.getKey('1-Up'):
-            self.movePlayer(1)
+            if self.y>self.yLower:
+                self.y-=1
         elif cira.keys.getKey('1-Down'):
-            self.movePlayer(2)
+            if self.y<self.yUpper:
+                self.y+=1
 
         #Add 1 to turn
         self.turn += 1
@@ -134,20 +150,3 @@ class MyGame(CiraGame):
             cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
                 self.cpuBlue)
         return
-
-    def movePlayer(self,direction):
-        if direction==1 or direction==5 or direction==6:
-            if self.y>self.yLower:
-                self.y-=1
-
-        if direction==2 or direction==7 or direction==8:
-            if self.y<self.yUpper:
-                self.y+=1
-
-        if direction==3 or direction==5 or direction==7:
-            if self.x>self.xLower:
-                self.x-=1
-
-        if direction==4 or direction==6 or direction==8:
-            if self.x<self.xUpper:
-                self.x+=1
