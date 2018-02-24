@@ -22,17 +22,13 @@ class MyGame(CiraGame):
     # called each time the frame updates
     def update(self):
         if cira.keys.getKey('1-Left'):
-            if self.x>0:
-                self.x-=1
+            self.x-=1
         elif cira.keys.getKey('1-Right'):
-            if self.x<19:
-                self.x+=1
+            self.x+=1
         elif cira.keys.getKey('1-Up'):
-            if self.y>0:
-                self.y-=1
+            self.y-=1
         elif cira.keys.getKey('1-Down'):
-            if self.y<22:
-                self.y+=1
+            self.y+=1
         pass
 
     # called when each frame needs to be drawn
