@@ -2,14 +2,7 @@ from cira.ciragame import *
 # this is a comment
 class MyGame(CiraGame):
     # engine variables
-    title = "Quick Start"
-
-    # These are the variables for my "player" pixel
-    x = 9
-    y = 11
-    red = 0
-    green = 0
-    blue = 255
+    title = "DrawingTutorial"
 
     # called once when the program starts up
     def awake(self):
@@ -25,5 +18,5 @@ class MyGame(CiraGame):
 
     # called when each frame needs to be drawn
     def draw(self):
-        cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
+        cira.display.putPixel(9,11,0,0,255)
         return
