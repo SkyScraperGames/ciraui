@@ -24,7 +24,6 @@ class MyGame(CiraGame):
 
     #Game over?
     gameOver = False
-    messagePrinted = False
 
     # called once when the program starts up
     def awake(self):
@@ -36,9 +35,6 @@ class MyGame(CiraGame):
 
     # called each time the frame updates
     def update(self):
-        if self.gameOver:
-            return
-
         if cira.keys.getKey('1-Left'):
             if self.x>0:
                 self.x-=1
@@ -88,10 +84,8 @@ class MyGame(CiraGame):
     def draw(self):
 
         if self.gameOver:
-            if self.messagePrinted == False:
-                cira.display.clearScreen(255,255,255)
-                print "Final speed: " + str(self.speed)
-                self.messagePrinted = True
+            cira.display.clearScreen(255,255,255)
+            #print "Final speed: " + str(self.speed)
         else:
             cira.display.clearScreen(0,0,0)
             cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
