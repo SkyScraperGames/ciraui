@@ -18,9 +18,6 @@ class MyGame(CiraGame):
     cpuGreen=0
     cpuBlue=0
 
-    speed = 10
-    turn = 0
-
     # called once when the program starts up
     def awake(self):
         pass
@@ -44,26 +41,15 @@ class MyGame(CiraGame):
             if self.y<22:
                 self.y+=1
 
-        #Add 1 to turn
-        self.turn += 1
+        if self.cpuX<self.x:
+            self.cpuX+=1
+        elif self.cpuX>self.x:
+            self.cpuX-=1
 
-        #Divide the turn by the speed
-        # if there's no remainder, then move the computer pixel
-        if self.turn % self.speed == 0:
-
-            # If the computer is to the left of the player, move right
-            # or if the computer is to the right of the player, move left
-            if self.cpuX<self.x:
-                self.cpuX+=1
-            elif self.cpuX>self.x:
-                self.cpuX-=1
-
-            #If the computer is above the player, move down. If the computer
-            # is below the player, move up.
-            if self.cpuY<self.y:
-                self.cpuY+=1
-            elif self.cpuY>self.y:
-                self.cpuY-=1
+        if self.cpuY<self.y:
+            self.cpuY+=1
+        elif self.cpuY>self.y:
+            self.cpuY-=1
 
         pass
 
@@ -74,4 +60,3 @@ class MyGame(CiraGame):
         cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
             self.cpuBlue)
         return
-

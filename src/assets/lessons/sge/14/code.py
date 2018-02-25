@@ -11,9 +11,8 @@ class MyGame(CiraGame):
     yUpper=22
 
     # These are the variables for my "player" pixel
-    playerValues = [9,11]
-    #x = 9
-    #y = 11
+    x = 9
+    y = 11
     red = 0
     green = 0
     blue = 255
@@ -41,8 +40,8 @@ class MyGame(CiraGame):
     def start(self):
         if self.gameOver:
             # These are the variables for my "player" pixel
-            self.playerValues[0] = 9
-            self.playerValues[1] = 11
+            self.x = 9
+            self.y = 11
             self.red = 0
             self.green = 0
             self.blue = 255
@@ -101,14 +100,14 @@ class MyGame(CiraGame):
 
             # If the computer is to the left of the player, move right
             # or if the computer is to the right of the player, move left
-            self.cpuX=self.chasePlayer(self.playerValues[0],self.cpuX)
+            self.cpuX=self.chasePlayer(self.x,self.cpuX)
 
             #If the computer is above the player, move down. If the computer
             # is below the player, move up.
-            self.cpuY=self.chasePlayer(self.playerValues[1],self.cpuY)
+            self.cpuY=self.chasePlayer(self.y,self.cpuY)
 
         #Check to see if the player has been caught
-        if self.playerValues[0] == self.cpuX and self.playerValues[1] == self.cpuY:
+        if self.x == self.cpuX and self.y == self.cpuY:
             self.gameOver = True
         pass
 
@@ -125,28 +124,27 @@ class MyGame(CiraGame):
                 self.start()
         else:
             cira.display.clearScreen(0,0,0)
-            cira.display.putPixel(self.playerValues[0],self.playerValues[1],
-                self.red,self.green,self.blue)
+            cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
             cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
                 self.cpuBlue)
         return
 
     def movePlayer(self,direction):
         if direction==1 or direction==5 or direction==6:
-            if self.playerValues[1]>self.yLower:
-                self.playerValues[1]-=1
+            if self.y>self.yLower:
+                self.y-=1
 
         if direction==2 or direction==7 or direction==8:
-            if self.playerValues[1]<self.yUpper:
-                self.playerValues[1]+=1
+            if self.y<self.yUpper:
+                self.y+=1
 
         if direction==3 or direction==5 or direction==7:
-            if self.playerValues[0]>self.xLower:
-                self.playerValues[0]-=1
+            if self.x>self.xLower:
+                self.x-=1
 
         if direction==4 or direction==6 or direction==8:
-            if self.playerValues[0]<self.xUpper:
-                self.playerValues[0]+=1
+            if self.x<self.xUpper:
+                self.x+=1
 
         return
 

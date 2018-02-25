@@ -4,12 +4,6 @@ class MyGame(CiraGame):
     # engine variables
     title = "Quick Start"
 
-    xLower=0
-    xUpper=19
-
-    yLower=0
-    yUpper=22
-
     # These are the variables for my "player" pixel
     x = 9
     y = 11
@@ -68,37 +62,17 @@ class MyGame(CiraGame):
         if self.gameOver:
             return
 
-        if cira.keys.getKey('1-Left') and cira.keys.getKey('1-Up'):
-            if self.x>self.xLower:
-                self.x-=1
-            if self.y>self.yLower:
-                self.y-=1
-        elif cira.keys.getKey('1-Left') and cira.keys.getKey('1-Down'):
-            if self.x>self.xLower:
-                self.x-=1
-            if self.y<self.yUpper:
-                self.y+=1
-        elif cira.keys.getKey('1-Right') and cira.keys.getKey('1-Up'):
-            if self.x<self.xUpper:
-                self.x+=1
-            if self.y>self.yLower:
-                self.y-=1
-        elif cira.keys.getKey('1-Right') and cira.keys.getKey('1-Down'):
-            if self.x<self.xUpper:
-                self.x+=1
-            if self.y<self.yUpper:
-                self.y+=1
-        elif cira.keys.getKey('1-Left'):
-            if self.x>self.xLower:
+        if cira.keys.getKey('1-Left'):
+            if self.x>0:
                 self.x-=1
         elif cira.keys.getKey('1-Right'):
-            if self.x<self.xUpper:
+            if self.x<19:
                 self.x+=1
         elif cira.keys.getKey('1-Up'):
-            if self.y>self.yLower:
+            if self.y>0:
                 self.y-=1
         elif cira.keys.getKey('1-Down'):
-            if self.y<self.yUpper:
+            if self.y<22:
                 self.y+=1
 
         #Add 1 to turn
@@ -150,4 +124,3 @@ class MyGame(CiraGame):
             cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
                 self.cpuBlue)
         return
-

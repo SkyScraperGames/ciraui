@@ -32,29 +32,6 @@ class MyGame(CiraGame):
 
     # called at the beginning of each play session
     def start(self):
-        if self.gameOver:
-            # These are the variables for my "player" pixel
-            self.x = 9
-            self.y = 11
-            self.red = 0
-            self.green = 0
-            self.blue = 255
-
-            # These are the variables for my "chaser" pixel
-            self.cpuX=0
-            self.cpuY=0
-            self.cpuRed=255
-            self.cpuGreen=0
-            self.cpuBlue=0
-
-            self.speed = 10
-            self.turn = 0
-            self.speedUp = 0
-
-            #Game over?
-            self.gameOver = False
-            self.messagePrinted = False
-
         pass
 
     # called each time the frame updates
@@ -114,14 +91,10 @@ class MyGame(CiraGame):
             if self.messagePrinted == False:
                 cira.display.clearScreen(255,255,255)
                 print "Final speed: " + str(self.speed)
-                print "Score: " + str(self.turn)
                 self.messagePrinted = True
-            else:
-                self.start()
         else:
             cira.display.clearScreen(0,0,0)
             cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
             cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
                 self.cpuBlue)
         return
-

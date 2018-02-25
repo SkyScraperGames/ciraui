@@ -11,8 +11,9 @@ class MyGame(CiraGame):
     yUpper=22
 
     # These are the variables for my "player" pixel
-    x = 9
-    y = 11
+    playerValues = [9,11]
+    #x = 9
+    #y = 11
     red = 0
     green = 0
     blue = 255
@@ -40,8 +41,8 @@ class MyGame(CiraGame):
     def start(self):
         if self.gameOver:
             # These are the variables for my "player" pixel
-            self.x = 9
-            self.y = 11
+            self.playerValues[0] = 9
+            self.playerValues[1] = 11
             self.red = 0
             self.green = 0
             self.blue = 255
@@ -69,37 +70,21 @@ class MyGame(CiraGame):
             return
 
         if cira.keys.getKey('1-Left') and cira.keys.getKey('1-Up'):
-            if self.x>self.xLower:
-                self.x-=1
-            if self.y>self.yLower:
-                self.y-=1
+            self.movePlayer(5)
         elif cira.keys.getKey('1-Left') and cira.keys.getKey('1-Down'):
-            if self.x>self.xLower:
-                self.x-=1
-            if self.y<self.yUpper:
-                self.y+=1
+            self.movePlayer(7)
         elif cira.keys.getKey('1-Right') and cira.keys.getKey('1-Up'):
-            if self.x<self.xUpper:
-                self.x+=1
-            if self.y>self.yLower:
-                self.y-=1
+            self.movePlayer(6)
         elif cira.keys.getKey('1-Right') and cira.keys.getKey('1-Down'):
-            if self.x<self.xUpper:
-                self.x+=1
-            if self.y<self.yUpper:
-                self.y+=1
+            self.movePlayer(8)
         elif cira.keys.getKey('1-Left'):
-            if self.x>self.xLower:
-                self.x-=1
+            self.movePlayer(3)
         elif cira.keys.getKey('1-Right'):
-            if self.x<self.xUpper:
-                self.x+=1
+            self.movePlayer(4)
         elif cira.keys.getKey('1-Up'):
-            if self.y>self.yLower:
-                self.y-=1
+            self.movePlayer(1)
         elif cira.keys.getKey('1-Down'):
-            if self.y<self.yUpper:
-                self.y+=1
+            self.movePlayer(2)
 
         #Add 1 to turn
         self.turn += 1
@@ -116,20 +101,14 @@ class MyGame(CiraGame):
 
             # If the computer is to the left of the player, move right
             # or if the computer is to the right of the player, move left
-            if self.cpuX<self.x:
-                self.cpuX+=1
-            elif self.cpuX>self.x:
-                self.cpuX-=1
+            self.cpuX=self.chasePlayer(self.playerValues[0],self.cpuX)
 
             #If the computer is above the player, move down. If the computer
             # is below the player, move up.
-            if self.cpuY<self.y:
-                self.cpuY+=1
-            elif self.cpuY>self.y:
-                self.cpuY-=1
+            self.cpuY=self.chasePlayer(self.playerValues[1],self.cpuY)
 
         #Check to see if the player has been caught
-        if self.x == self.cpuX and self.y == self.cpuY:
+        if self.playerValues[0] == self.cpuX and self.playerValues[1] == self.cpuY:
             self.gameOver = True
         pass
 
@@ -146,7 +125,35 @@ class MyGame(CiraGame):
                 self.start()
         else:
             cira.display.clearScreen(0,0,0)
-            cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
+            cira.display.putPixel(self.playerValues[0],self.playerValues[1],
+                self.red,self.green,self.blue)
             cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
                 self.cpuBlue)
         return
+
+    def movePlayer(self,direction):
+        if direction==1 or direction==5 or direction==6:
+            if self.playerValues[1]>self.yLower:
+                self.playerValues[1]-=1
+
+        if direction==2 or direction==7 or direction==8:
+            if self.playerValues[1]<self.yUpper:
+                self.playerValues[1]+=1
+
+        if direction==3 or direction==5 or direction==7:
+            if self.playerValues[0]>self.xLower:
+                self.playerValues[0]-=1
+
+        if direction==4 or direction==6 or direction==8:
+            if self.playerValues[0]<self.xUpper:
+                self.playerValues[0]+=1
+
+        return
+
+    def chasePlayer(self,playerCoordinate,cpuCoordinate):
+            if cpuCoordinate<playerCoordinate:
+                return cpuCoordinate+1
+            elif cpuCoordinate>playerCoordinate:
+                return cpuCoordinate-1
+
+            return cpuCoordinate

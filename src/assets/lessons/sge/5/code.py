@@ -11,13 +11,6 @@ class MyGame(CiraGame):
     green = 0
     blue = 255
 
-    # These are the variables for my "chaser" pixel
-    cpuX=0
-    cpuY=0
-    cpuRed=255
-    cpuGreen=0
-    cpuBlue=0
-
     # called once when the program starts up
     def awake(self):
         pass
@@ -40,24 +33,10 @@ class MyGame(CiraGame):
         elif cira.keys.getKey('1-Down'):
             if self.y<22:
                 self.y+=1
-
-        if self.cpuX<self.x:
-            self.cpuX+=1
-        elif self.cpuX>self.x:
-            self.cpuX-=1
-
-        if self.cpuY<self.y:
-            self.cpuY+=1
-        elif self.cpuY>self.y:
-            self.cpuY-=1
-
         pass
 
     # called when each frame needs to be drawn
     def draw(self):
         cira.display.clearScreen(0,0,0)
         cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
-        cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
-            self.cpuBlue)
         return
-

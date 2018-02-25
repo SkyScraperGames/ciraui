@@ -18,5 +18,4 @@ class MyGame(CiraGame):
 
     # called when each frame needs to be drawn
     def draw(self):
-        cira.display.putPixel(9,11,0,0,255)
         return

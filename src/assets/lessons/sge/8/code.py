@@ -22,9 +22,6 @@ class MyGame(CiraGame):
     turn = 0
     speedUp = 0
 
-    #Game over?
-    gameOver = False
-
     # called once when the program starts up
     def awake(self):
         pass
@@ -75,22 +72,12 @@ class MyGame(CiraGame):
             elif self.cpuY>self.y:
                 self.cpuY-=1
 
-        #Check to see if the player has been caught
-        if self.x == self.cpuX and self.y == self.cpuY:
-            self.gameOver = True
         pass
 
     # called when each frame needs to be drawn
     def draw(self):
-
-        if self.gameOver:
-            cira.display.clearScreen(255,255,255)
-            #print "Final speed: " + str(self.speed)
-        else:
-            cira.display.clearScreen(0,0,0)
-            cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
-            cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
-                self.cpuBlue)
+        cira.display.clearScreen(0,0,0)
+        cira.display.putPixel(self.x,self.y,self.red,self.green,self.blue)
+        cira.display.putPixel(self.cpuX,self.cpuY,self.cpuRed,self.cpuGreen,
+            self.cpuBlue)
         return
-
-

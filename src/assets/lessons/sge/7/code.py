@@ -20,7 +20,6 @@ class MyGame(CiraGame):
 
     speed = 10
     turn = 0
-    speedUp = 0
 
     # called once when the program starts up
     def awake(self):
@@ -51,12 +50,6 @@ class MyGame(CiraGame):
         #Divide the turn by the speed
         # if there's no remainder, then move the computer pixel
         if self.turn % self.speed == 0:
-
-            #Speed up the computer every 5 times it moves
-            self.speedUp += 1
-            if self.speedUp == 5 and self.speed > 1:
-                self.speedUp = 0
-                self.speed -= 1
 
             # If the computer is to the left of the player, move right
             # or if the computer is to the right of the player, move left
