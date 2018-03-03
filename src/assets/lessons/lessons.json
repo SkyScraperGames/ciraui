@@ -96,6 +96,10 @@
       {
         "directory": "14",
         "name": "SGE Quick Start 14"
+      },
+      {
+        "directory": "15",
+        "name": "SGE Quick Start 15"
       }
     ]
   }
