@@ -55,6 +55,22 @@ const router = new Router({
       meta: { requiresAuth: true },
     },
     {
+      path: '/user/changeEmail',
+      name: 'Change Email',
+      component: view('user/ChangeRecoveryEmail'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/user/forgotPassword',
+      name: 'Forgot Password',
+      component: view('user/ForgotPassword'),
+    },
+    {
+      path: '/user/changePassword/:pin?',
+      name: 'Change Password',
+      component: view('user/ChangePassword'),
+    },
+    {
       path: '/game/:game',
       name: 'Game',
       component: view('Game'),

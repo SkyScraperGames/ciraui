@@ -69,12 +69,12 @@
                   <b-notification v-if="formError" type="is-danger" has-icon>
                     {{ formError }}
                   </b-notification>
-                  <b-field label="Email">
+                  <b-field label="Username">
                     <b-input
-                      type="email"
-                      placeholder="Email"
+                      type="name"
+                      placeholder="Username"
                       required
-                      v-model="email">
+                      v-model="username">
                     </b-input>
                   </b-field>
 
@@ -93,6 +93,9 @@
                     <button class="button is-primary mt-20" :class="{ 'is-loading': buttonLoading }">Login</button>
                   </div>
                   <div class="mt-20">
+                    <router-link @click.native="closeLoginDropdown" to="/user/forgotPassword">Forgot password?</router-link>
+                  </div>
+                  <div class="mt-20">
                     <router-link @click.native="closeLoginDropdown" to="/user/register">Don't have an account? Sign up!</router-link>
                   </div>
                 </section>
@@ -102,7 +105,7 @@
         </b-dropdown>
         <b-dropdown position="is-bottom-left" v-else>
           <a class="navbar-item" slot="trigger">
-            <span>{{ user }}</span>
+            <span>{{ user.email }}</span>
             <b-icon class="is-hidden-touch" icon="menu-down"></b-icon>
           </a>
 
@@ -111,6 +114,12 @@
           </b-dropdown-item>
           <b-dropdown-item has-link>
             <router-link to="/user/resetPassword">Reset Password</router-link>
+          </b-dropdown-item>
+          <b-dropdown-item has-link>
+            <router-link to="/user/changeEmail">
+              Change Recovery Email
+              <b-icon v-if="!user.recoveryEmail" icon="alert-decagram"></b-icon>
+            </router-link>
           </b-dropdown-item>
           <b-dropdown-item @click="logout">Log out</b-dropdown-item>
         </b-dropdown>
@@ -131,7 +140,7 @@
     data() {
       return {
         open: false,
-        email: '',
+        username: '',
         password: '',
         remember: false,
         buttonLoading: false,
@@ -164,17 +173,17 @@
 
         const vm = this;
 
-        login(this.email, this.password, this.remember)
+        login(this.username, this.password, this.remember)
           .then((response) => {
-            if (!response.ok) {
-              response.json().then((data) => {
+            response.json().then((data) => {
+              if (!response.ok) {
                 vm.formError = data.message;
-              });
-              return;
-            }
+                return;
+              }
 
-            this.login(this.email);
-            this.$router.push('/user/profile');
+              this.login(data);
+              this.$router.push('/user/profile');
+            });
           })
           .catch(() => {
             this.formError = 'An unknown error occured. Please try again.';

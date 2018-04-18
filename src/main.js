@@ -16,7 +16,7 @@ if (localStorage.getItem('loggedIn') === 'true') {
     .then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          store.dispatch('login', data.email);
+          store.dispatch('login', data);
         });
       }
     });

@@ -19,8 +19,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    login({ commit }, email) {
-      commit('setUser', email);
+    login({ commit }, username) {
+      commit('setUser', username);
       localStorage.setItem('loggedIn', 'true');
     },
     logout({ commit }) {

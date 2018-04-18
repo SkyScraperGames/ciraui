@@ -5,12 +5,21 @@
         {{ formError }}
       </b-notification>
       <h1 class="is-size-1 mb-25 mt-25">Register</h1>
-      <b-field label="Email">
+      <b-field label="Username">
+        <b-input
+          type="text"
+          placeholder="Username"
+          required
+          v-model="username">
+        </b-input>
+      </b-field>
+
+      <b-field label="Recovery Email">
         <b-input
           type="email"
-          placeholder="Email"
+          placeholder="Recovery Email"
           required
-          v-model="email">
+          v-model="recoveryEmail">
         </b-input>
       </b-field>
 
@@ -55,7 +64,8 @@
   export default {
     data() {
       return {
-        email: '',
+        username: '',
+        recoveryEmail: '',
         password: '',
         confirmPassword: '',
         buttonLoading: false,
@@ -74,17 +84,17 @@
 
         const vm = this;
 
-        register(this.email, this.password)
+        register(this.username, this.recoveryEmail, this.password)
           .then((response) => {
-            if (!response.ok) {
-              response.json().then((data) => {
+            response.json().then((data) => {
+              if (!response.ok) {
                 vm.formError = data.message;
-              });
-              return;
-            }
+                return;
+              }
 
-            this.login(this.email);
-            this.$router.push('/user/profile');
+              this.login(data);
+              this.$router.push('/user/profile');
+            });
           })
           .catch(() => {
             this.formError = 'An unknown error occured. Please try again.';
