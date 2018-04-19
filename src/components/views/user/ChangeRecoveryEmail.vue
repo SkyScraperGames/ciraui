@@ -5,6 +5,14 @@
   </b-notification>
   <h1 class="is-size-1 mb-25 mt-25">Change Recovery Email</h1>
 
+  <b-field label="Current Recovery Email">
+    <b-input
+      type="email"
+      disabled
+      :value="user.recoveryEmail">
+    </b-input>
+  </b-field>
+
   <b-field label="Current Password">
     <b-input
       type="password"
@@ -31,6 +39,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { changeEmail } from '../../../api/user';
 
   export default {
@@ -41,6 +50,11 @@
         buttonLoading: false,
         formError: null,
       };
+    },
+    computed: {
+      ...mapState([
+        'user',
+      ]),
     },
     methods: {
       submit() {

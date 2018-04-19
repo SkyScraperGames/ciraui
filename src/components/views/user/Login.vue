@@ -29,6 +29,9 @@
         <button class="button is-primary mt-20" :class="{ 'is-loading': buttonLoading }">Login</button>
       </div>
       <div class="mt-20">
+        <router-link @click.native="closeLoginDropdown" to="/user/forgotPassword">Forgot password?</router-link>
+      </div>
+      <div class="mt-20">
         <router-link to="/user/register">Don't have an account? Sign up!</router-link>
       </div>
     </form>
