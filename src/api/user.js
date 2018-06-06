@@ -105,3 +105,17 @@ export function changeEmail(recoveryEmail, password) {
     credentials: 'include',
   });
 }
+
+export function analytics(gender) {
+  const formData = new URLSearchParams();
+  formData.set('gender', gender);
+
+  return fetch(`${config.api}/user/analytics`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: formData,
+    credentials: 'include',
+  });
+}

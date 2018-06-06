@@ -1,5 +1,37 @@
 <template>
   <div class="container">
+    <h1 class="is-size-3 mb-10">My Profile</h1>
+    <form class="container login-form mb-20" @submit.prevent="submit">
+      <b-notification v-if="formError" type="is-danger" has-icon>
+        {{ formError }}
+      </b-notification>
+
+      <b-field label="Gender">
+        <b-select placeholder="Select a Gender" v-model="gender">
+          <option
+            v-for="gender in genders"
+            :value="gender"
+            :key="gender">
+            {{ gender }}
+          </option>
+        </b-select>
+      </b-field>
+
+      <b-field label="Please specify gender" v-if="gender === 'Other'">
+          <b-input
+            type="text"
+            placeholder="Specify gender"
+            required
+            v-model="genderSpecify">
+          </b-input>
+      </b-field>
+
+      <div>
+        <button class="button is-primary" :class="{ 'is-loading': buttonLoading }">Save</button>
+      </div>
+    </form>
+
+    <h1 class="is-size-3">My Projects</h1>
     <b-table
       :data="Object.values(files)"
       >
@@ -73,7 +105,7 @@
 </template>
 
 <script>
-  import { profile } from '../../../api/user';
+  import { profile, analytics } from '../../../api/user';
   import { deleteFile } from '../../../api/editor';
 
   export default {
@@ -83,6 +115,16 @@
         isVersionsModalActive: false,
         isDeleteModalActive: false,
         currentFile: null,
+        buttonLoading: false,
+        formError: null,
+        genders: [
+          'Female',
+          'Male',
+          'Prefer not to say',
+          'Other',
+        ],
+        gender: null,
+        genderSpecify: null,
       };
     },
     methods: {
@@ -114,6 +156,29 @@
             });
           });
       },
+      submit() {
+        this.buttonLoading = true;
+        this.formError = null;
+
+        const vm = this;
+
+        const gender = this.gender === 'Other' ? this.genderSpecify : this.gender;
+
+        analytics(gender)
+          .then((response) => {
+            response.json().then((data) => {
+              if (!response.ok) {
+                vm.formError = data.message;
+              }
+            });
+          })
+          .catch(() => {
+            this.formError = 'An unknown error occured. Please try again.';
+          })
+          .finally(() => {
+            this.buttonLoading = false;
+          });
+      },
     },
     mounted() {
       const vm = this;
@@ -139,6 +204,14 @@
             });
 
             vm.files = finalArray;
+
+            if (vm.genders.includes(data.gender)) {
+              vm.gender = data.gender;
+              return;
+            }
+
+            vm.gender = 'Other';
+            vm.genderSpecify = data.gender;
           });
         });
     },
